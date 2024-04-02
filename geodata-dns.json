@@ -1,0 +1,30 @@
+{
+  "dns": {
+    "servers": [
+      { "tag": "dns_block", "address": "rcode://refused" },
+      { "tag": "dns_alidns", "address": "h3://223.5.5.5/dns-query", "detour": "DIRECT" },
+      { "tag": "dns_dnspod", "address": "https://1.12.12.12/dns-query", "detour": "DIRECT" },
+      { "tag": "dns_fakeip", "address": "fakeip" }
+    ],
+    "rules": [
+      { "outbound": "any", "server": [ "dns_alidns", "dns_dnspod" ] },
+      { "clash_mode": "Direct", "server": [ "dns_alidns", "dns_dnspod" ] },
+      { "clash_mode": "Global", "server": "dns_fakeip", "rewrite_ttl": 1 },
+      { "geosite": [ "ads" ], "server": "dns_block" },
+      { "domain_keyword": ".", "invert": true, "query_type": [ "A", "AAAA" ], "server": [ "dns_alidns", "dns_dnspod" ] },
+      { "domain_suffix": [ "lan", "localdomain", "example", "invalid", "localhost", "test", "local", "home.arpa", "time.edu.cn", "ntp.org.cn", "pool.ntp.org", "music.163.com", "126.net", "kuwo.cn", "y.qq.com", "xiami.com", "music.migu.cn", "msftconnecttest.com", "msftncsi.com", "qq.com", "tencent.com", "srv.nintendo.net", "n.n.srv.nintendo.net", "stun.playstation.net", "battlenet.com.cn", "wotgame.cn", "wggames.cn", "wowsgame.cn", "wargaming.net", "linksys.com", "linksyssmartwifi.com", "router.asus.com", "nflxvideo.net", "square-enix.com", "finalfantasyxiv.com", "ffxiv.com", "ff14.sdo.com", "mcdn.bilivideo.cn", "media.dssott.com", "cmbchina.com", "cmbimg.com", "sandai.net", "n0808.com", "3gppnetwork.org" ], "query_type": [ "A", "AAAA" ], "server": [ "dns_alidns", "dns_dnspod" ] },
+      { "domain": [ "time-ios.apple.com", "time1.cloud.tencent.com", "music.163.com", "musicapi.taihe.com", "music.taihe.com", "songsearch.kugou.com", "trackercdn.kugou.com", "api-jooxtt.sanook.com", "api.joox.com", "joox.com", "y.qq.com", "streamoc.music.tc.qq.com", "mobileoc.music.tc.qq.com", "isure.stream.qqmusic.qq.com", "dl.stream.qqmusic.qq.com", "aqqmusic.tc.qq.com", "amobile.music.tc.qq.com", "music.migu.cn", "localhost.ptlogin2.qq.com", "localhost.sec.qq.com", "xnotify.xboxlive.com", "proxy.golang.org", "heartbeat.belkin.com", "mesu.apple.com", "swscan.apple.com", "swquery.apple.com", "swdownload.apple.com", "swcdn.apple.com", "swdist.apple.com", "lens.l.google.com", "stun.l.google.com", "na.b.g-tun.com", "ff.dorado.sdo.com", "shark007.net", "Mijia Cloud", "adguardteam.github.io", "adrules.top", "anti-ad.net", "local.adguard.org", "static.adtidy.org", "1c.premierzal.ru", "6ahddutb1ucc3cp.ru", "aarsen.me", "aegir.sexy", "amigacity.xyz", "black-bird.ynh.fr", "bt.ktrackers.com", "bt1.archive.org", "bt2.archive.org", "btt.service.gongt.me", "concen.org", "d40969.acod.regrucolo.ru", "ec2-18-191-163-220.us-east-2.compute.amazonaws.com", "epider.me", "evan.im", "exodus.desync.com", "fh2.cmp-gaming.com", "free.publictracker.xyz", "ipv4.rer.lol", "ipv6.fuuuuuck.com", "jutone.com", "martin-gebhardt.eu", "moonburrow.club", "movies.zsw.ca", "new-line.net", "ns1.monolithindustries.com", "odd-hd.fr", "oh.fuuuuuck.com", "open.demonii.com", "open.demonoid.ch", "open.dstud.io", "open.stealth.si", "open.tracker.ink", "open.u-p.pw", "open.xxtor.com", "opentor.org", "opentracker.io", "p2p.publictracker.xyz", "p4p.arenabg.com", "pirate.t-1.org", "public.publictracker.xyz", "public.tracker.vraphim.com", "retracker.hotplug.ru", "retracker.lanta.me", "retracker01-msk-virt.corbina.net", "run-2.publictracker.xyz", "run.publictracker.xyz", "ryjer.com", "seedpeer.net", "su-data.com", "tamas3.ynh.fr", "tk1.trackerservers.com", "torrents.artixlinux.org", "tracker-udp.gbitt.info", "tracker.0x7c0.com", "tracker.anima.nz", "tracker.ccp.ovh", "tracker.cyberia.is", "tracker.ddunlimited.net", "tracker.dler.com", "tracker.dler.org", "tracker.edkj.club", "tracker.farted.net", "tracker.filemail.com", "tracker.fnix.net", "tracker.jamesthebard.net", "tracker.moeking.me", "tracker.opentrackr.org", "tracker.picotorrent.one", "tracker.publictracker.xyz", "tracker.qu.ax", "tracker.skyts.net", "tracker.srv00.com", "tracker.t-rb.org", "tracker.theoks.net", "tracker.therarbg.com", "tracker.therarbg.to", "tracker.tiny-vps.com", "tracker.torrent.eu.org", "tracker.torrust-demo.com", "tracker.tryhackx.org", "tracker.vds.nz", "tracker1.myporn.club", "tracker2.dler.com", "tracker2.dler.org", "tracker2.itzmx.com", "tracker3.itzmx.com", "tracker4.itzmx.com", "ttk2.nbaonlineservice.com", "u4.trakx.crim.ist", "u6.trakx.crim.ist", "wepzone.net", "www.torrent.eu.org" ], "query_type": [ "A", "AAAA" ], "server": [ "dns_alidns", "dns_dnspod" ] },
+      { "type": "logical", "mode": "and", "rules": [ { "domain_keyword": [ "time" ], "query_type": [ "A", "AAAA" ] }, { "domain_keyword": [ "com" ], "query_type": [ "A", "AAAA" ] } ], "server": [ "dns_alidns", "dns_dnspod" ] },
+      { "type": "logical", "mode": "and", "rules": [ { "domain_keyword": [ "ntp" ], "query_type": [ "A", "AAAA" ] }, { "domain_keyword": [ "com" ], "query_type": [ "A", "AAAA" ] } ], "server": [ "dns_alidns", "dns_dnspod" ] },
+      { "type": "logical", "mode": "and", "rules": [ { "domain_keyword": [ "xbox" ], "query_type": [ "A", "AAAA" ] }, { "domain_keyword": [ "com" ], "query_type": [ "A", "AAAA" ] } ], "server": [ "dns_alidns", "dns_dnspod" ] },
+      { "domain_keyword": [ "stun" ], "query_type": [ "A", "AAAA" ], "server": [ "dns_alidns", "dns_dnspod" ] },
+      { "geosite": [ "microsoft-cn", "apple-cn", "google-cn", "games-cn", "cn", "private" ], "query_type": [ "A", "AAAA" ], "server": [ "dns_alidns", "dns_dnspod" ] },
+      { "geosite": [ "cn" ], "invert": true, "query_type": [ "A", "AAAA" ], "server": "dns_fakeip", "rewrite_ttl": 1 }
+    ],
+    "final": [ "dns_alidns", "dns_dnspod" ],
+    "strategy": "prefer_ipv4",
+    "independent_cache": true,
+    "reverse_mapping": true,
+    "fakeip": { "enabled": true, "inet4_range": "198.18.0.0/15", "inet6_range": "fc00::/18" }
+  }
+}
